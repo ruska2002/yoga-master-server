@@ -4,12 +4,12 @@ import api from '../lib/axios'
 
 export default function ManageClasses() {
   const [classes, setClasses] = useState([])
-  const [loading, setLoading] = useState(true) // ← was empty string
+  const [loading, setLoading] = useState(true) 
 
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const res = await api.get('/classes-manage') // ← was api.get(dataFetch) which is wrong
+        const res = await api.get('/classes-manage') 
         setClasses(res.data)
       } catch (err) {
         console.log(err)
@@ -17,14 +17,14 @@ export default function ManageClasses() {
         setLoading(false)
       }
     }
-    fetchClasses() // ← was never called
-  }, []) // ← missing dependency array, would loop forever
+    fetchClasses() 
+  }, []) 
 
   const handleApprove = async (id) => {
   try {
-    const token = localStorage.getItem("token") // ← add
+    const token = localStorage.getItem("token") 
     await api.put(`/change-status/${id}`, { status: 'approved', reason: '' }, {
-      headers: { Authorization: `Bearer ${token}` } // ← add
+      headers: { Authorization: `Bearer ${token}` } 
     })
     setClasses(classes.map(cls => cls._id === id ? { ...cls, status: 'approved' } : cls))
   } catch (err) {

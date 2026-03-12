@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import avatar from '../../public/assets/meditation.png';
 
-export default function NavBar() {
+export default function NavBar({menuOpen, setMenuOpen}) {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
-  const [menuOpen, setMenuOpen] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -16,6 +16,7 @@ export default function NavBar() {
     localStorage.removeItem("user");
     setUser(null);
     setMenuOpen(false);
+    menuOpen(false)
     navigate("/");
   };
 
@@ -54,13 +55,13 @@ export default function NavBar() {
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-[#712941]"
         >
-          {menuOpen ? <HiX className="w-6 h-6" /> : <HiMenuAlt3 className="w-6 h-6" />}
+          {menuOpen ? <HiX className="w-6 h-5" /> : <HiMenuAlt3 className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile dropdown menu */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col gap-4 px-6 pb-6 text-[#712941] bg-white shadow-md">
+        <div className="md:hidden flex flex-col gap-4 px-6 pb-6 text-[#712941] bg-[#dac2da] shadow-md">
           <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-[#c86989] transition">Home</Link>
           <Link to="/instructors" onClick={() => setMenuOpen(false)} className="hover:text-[#c86989] transition">Instructors</Link>
           <Link to="/classes" onClick={() => setMenuOpen(false)} className="hover:text-[#c86989] transition">Classes</Link>

@@ -76,13 +76,13 @@ const handleSelect = async (selectedClass) => {
             <NavBar/>
            <div className="flex flex-col">
             <hr className="mt-[5%]"/>
-             <p className="text-center text-[#712941] text-[35px] font-bold uppercase">Classes</p>
+             <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold uppercase">Classes</p>
              <hr className="mb-[5%]"/>
-            <div className="grid grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 sm:grid gap-6 max-w-6xl mx-auto">
                 {classes.map((cls) => (
                    <div
                     key={cls._id}
-                    className="w-[230px] h-[320px] shadow-2xl rounded-lg overflow-hidden relative group cursor-pointer flex flex-col"
+                   className="w-[170px] h-[280px] min-[535px]:w-[230px] min-[535px]:h-[300px] shadow-2xl rounded-lg overflow-hidden relative group cursor-pointer flex flex-col"
                     >
                     <img
                         src={cls.image}
@@ -91,9 +91,9 @@ const handleSelect = async (selectedClass) => {
 
                     
                     <div className="p-4 text-[#712941] flex flex-col flex-1">
-                        <p className="font-bold">{cls.name}</p>
-                        <p>Instructor: {cls.instructorName}</p>
-                        <p>Available Seats: {cls.availableSeats}</p>
+                        <p className="font-bold text-[12px] min-[535px]:text-[15px]">{cls.name}</p>
+                        <p className="text-[10px] min-[535px]:text-[14px]">Instructor: {cls.instructorName}</p>
+                        <p className="text-[9px] min-[535px]:text-[13px]">Available Seats: {cls.availableSeats}</p>
                        
                     
                         <button onClick={() => navigate(`/classes/${cls._id}`)} className="mt-auto bg-[#712941] hover:bg-[#c86989] text-white py-1 rounded z-10">
@@ -108,7 +108,7 @@ const handleSelect = async (selectedClass) => {
                     onClick={() => handleSelect(cls)}
                     disabled={cartIds.includes(cls._id) || enrolledIds.includes(cls._id)}
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                      py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10
+                       sm:py-2 sm:px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10
                       disabled:bg-gray-400 disabled:cursor-not-allowed
                       bg-[#c86989] text-white hover:bg-[#712941]"
                   >

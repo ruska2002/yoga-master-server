@@ -11,6 +11,7 @@ export default function HomePage() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popularClasses, setPopularClasses] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,10 +80,10 @@ export default function HomePage() {
     className="w-full h-auto block"
   />
   <div className="absolute top-0 left-0 w-full z-10">
-    <NavBar />
+    <NavBar  menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
   </div>
   <div className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 text-center text-[#712941] z-10 w-full px-4">
-    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+    <h1 className={menuOpen ? "hidden" : "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"}>
       Welcome to YogaVibe
     </h1>
   </div>

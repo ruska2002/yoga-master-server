@@ -33,7 +33,7 @@ export default function Instructors() {
       <NavBar />
       <div className=''>
         <hr className="mt-[5%]"/>
-        <p className="text-center text-[#712941] text-[35px] font-bold">INSTRUCTORS</p>
+        <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold">INSTRUCTORS</p>
 <hr className="mb-[5%]"/>
       <div className="mt-10 space-y-8">
      {instructors.map((inst, index) => (
@@ -41,7 +41,7 @@ export default function Instructors() {
       key={index}
       className={`flex items-center justify-center gap-6 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
     >
-          <div className="w-64 h-60 overflow-hidden rounded-3xl shadow-2xl">
+          <div className="md:w-64 md:h-60 w-32 h-36 overflow-hidden rounded-3xl shadow-2xl">
               <img
                 src={inst.photoUrl}
                 alt={inst.name}
@@ -49,10 +49,10 @@ export default function Instructors() {
               />
             </div>
              <div className="w-1/2 flex flex-col gap-2">
-              <h2 className="text-2xl font-bold text-[#7d344c] text-center">{inst.name}</h2>
-              <h3 className='text-xl font-medium text-[#a3355a]'>What is yoga to me?</h3>
-              <p className='text-[#ab3a60]'>{inst.yoga}</p>
-              <p className='text-[#b75b7a]'>{inst.name}'s experience - {inst.yearsOfExperience} years</p>
+              <h2 className="md:text-2xl text-[15px] font-bold text-[#7d344c] text-center">{inst.name}</h2>
+              <h3 className='md:text-xl text-[10px] font-medium text-[#a3355a]'>What is yoga to me?</h3>
+              <p className='text-[#ab3a60] text-[10px] md:text-[16px]'>{inst.yoga}</p>
+              <p className='text-[#b75b7a] text-[9px] md:text-[15px] font-semibold'>{inst.name}'s experience - {inst.yearsOfExperience} years</p>
             </div>
           </div>
         ))}
