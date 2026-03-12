@@ -3,11 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import avatar from '../../public/assets/meditation.png';
 
-export default function NavBar({menuOpen, setMenuOpen}) {
+export default function NavBar({ onMenuToggle }) {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = (value) => {
+    setMenuOpen(value);
+    if (onMenuToggle) onMenuToggle(value); 
+  };
+
   
   const navigate = useNavigate();
 
@@ -22,7 +29,7 @@ export default function NavBar({menuOpen, setMenuOpen}) {
 
   return (
     <header className="w-full">
-      <div className="flex justify-between items-center px-6 sm:px-12 py-4 w-full">
+      <div className="flex justify-between items-center px-6 sm:px-12 py-4 w-full bg-[#dac2da]">
         
         {/* Logo */}
         <h2 className="text-[#712941] text-xl font-bold">YogaVibe</h2>
@@ -52,7 +59,7 @@ export default function NavBar({menuOpen, setMenuOpen}) {
 
         {/* Mobile hamburger */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => toggleMenu(!menuOpen)}
           className="md:hidden text-[#712941]"
         >
           {menuOpen ? <HiX className="w-6 h-5" /> : <HiMenuAlt3 className="w-6 h-6" />}

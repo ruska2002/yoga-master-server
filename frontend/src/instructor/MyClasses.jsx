@@ -15,7 +15,7 @@ export default function MyClasses() {
         const res = await api.get(`/classes/${user?.email}`, {
           headers: { Authorization: `Bearer ${token}` }
         })
-        setClasses(res.data) // ← no filter, show all
+        setClasses(res.data)
       } catch (err) {
         console.log(err)
       } finally {
@@ -27,15 +27,23 @@ export default function MyClasses() {
 
   if (loading) return <PreLoader inline />
 
+  const statusStyle = (status) => {
+    if (status === 'pending') return 'bg-yellow-100 text-yellow-700'
+    if (status === 'approved') return 'bg-green-100 text-green-700'
+    return 'bg-red-100 text-red-700'
+  }
+
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold text-[#712941] mb-6">My Classes</h2>
+    <div className="p-4 sm:p-6">
+      <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">My Classes</h2>
 
       {classes.length === 0 ? (
         <p className="text-center text-[#712941]">You haven't added any classes yet.</p>
       ) : (
-        <div className="p-6 bg-[#f3d3e0] border rounded-lg shadow-md">
-          <table className="w-full border-collapse">
+        <div className="p-3 sm:p-6 bg-[#f3d3e0] border rounded-lg shadow-md">
+
+          {/* Desktop table */}
+          <table className="hidden sm:table w-full border-collapse">
             <thead>
               <tr className="text-[#712941] uppercase text-sm">
                 <th className="p-3 text-left">#</th>
@@ -61,10 +69,7 @@ export default function MyClasses() {
                   <td className="p-3">{cls.totalEnrolled || 0}</td>
                   <td className="p-3 capitalize">{cls.level || '—'}</td>
                   <td className="p-3">
-                    <span className={`text-xs px-2 py-1 rounded-full font-semibold capitalize
-                      ${cls.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                        cls.status === 'approved' ? 'bg-green-100 text-green-700' :
-                        'bg-red-100 text-red-700'}`}>
+                    <span className={`text-xs px-2 py-1 rounded-full font-semibold capitalize ${statusStyle(cls.status)}`}>
                       {cls.status}
                     </span>
                   </td>
@@ -72,6 +77,29 @@ export default function MyClasses() {
               ))}
             </tbody>
           </table>
+
+          {/* Mobile cards */}
+          <div className="flex flex-col gap-3 sm:hidden">
+            {classes.map((cls, index) => (
+              <div key={cls._id} className="bg-white/60 rounded-lg p-3 border border-[#c86989]/30 flex gap-3 items-center">
+                <span className="text-xs text-[#a07080] w-4 shrink-0">{index + 1}</span>
+                <img src={cls.image} alt={cls.name} className="w-14 h-12 object-cover rounded shrink-0" />
+                <div className="flex flex-col gap-1 flex-1 min-w-0">
+                  <p className="text-[#712941] font-semibold text-sm truncate">{cls.name}</p>
+                  <div className="flex gap-3 text-xs text-[#a07080] flex-wrap">
+                    <span>${cls.price}</span>
+                    <span>Seats: {cls.availableSeats}</span>
+                    <span>Enrolled: {cls.totalEnrolled || 0}</span>
+                    <span className="capitalize">Level: {cls.level || '—'}</span>
+                  </div>
+                </div>
+                <span className={`text-xs px-2 py-1 rounded-full font-semibold capitalize shrink-0 ${statusStyle(cls.status)}`}>
+                  {cls.status}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
       )}
     </div>

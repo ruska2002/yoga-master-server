@@ -31,10 +31,12 @@ export default function Login() {
  <div className="flex flex-col min-h-screen">
   <NavBar />
 
-  <main className="flex flex-col justify-center items-center flex-1 px-4">
-     <h1 className="md:text-3xl text-[18px] font-bold mb-6 text-center text-[#712941]">
-        Get Started Today
-      </h1>
+  <main className="flex flex-col justify-center items-center flex-1 px-4 mt-6">
+  
+  <h1 className="md:text-3xl text-[18px] font-bold mb-4 text-center text-[#712941]">
+    Get Started Today
+  </h1>
+ 
     <form onSubmit={handleSubmit}>
       <div className="md:w-[350px] shadow-xl p-6 rounded-lg w-[260px]">
 
