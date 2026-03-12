@@ -9,7 +9,10 @@ const bcrypt = require("bcrypt");
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 //middleware
-app.use(cors())
+app.use(cors({
+  origin: ['https://yoga-master-server-mu.vercel.app', 'http://localhost:5173'],
+  credentials: true
+}))
 app.use(express.json())
 
 
