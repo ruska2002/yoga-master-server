@@ -20,7 +20,7 @@ const PupularCourses = ({ clss }) => {
         alt={clss.name}
         className="w-full h-36 object-cover"
       />
-      <div className="p-2 bg-white">
+      <div className="p-2 bg-white font-dancing">
         <h3 className="text-[#712941] font-bold text-lg">{clss.name}</h3>
         <p className="text-gray-600 text-sm">{clss.instructorName}</p>
       </div>

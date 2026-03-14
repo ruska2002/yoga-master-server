@@ -3,6 +3,8 @@ import api from '../lib/axios'
 import NavBar from '../components/NavBar'
 import { useParams } from "react-router-dom"
 import Footer from '../components/Footer'
+import { Link, useNavigate } from 'react-router-dom'
+// import { useAuth } from '../context/AuthContext'
 import PreLoader from "../components/PreLoader";
 
 const ClassDetails = () => {
@@ -10,7 +12,17 @@ const ClassDetails = () => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true);
     const videoRef = useRef(null);
+    // const { user } = useAuth()
+    const navigate = useNavigate()
 
+   const handleEnroll = () => {
+    const token = localStorage.getItem("token")
+    if (!token) return navigate('/login')
+
+    localStorage.setItem("checkoutClasses", JSON.stringify([clss]))
+    localStorage.setItem("checkoutTotal", Number(clss.price).toFixed(2))
+    navigate('/dashboard/payment-info')
+}
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -45,7 +57,7 @@ const ClassDetails = () => {
     if (loading || !clss) return <PreLoader />;
 
     return (
-        <div>
+        <div className='font-dancing'>
             <NavBar />
             <hr className="mt-[5%]" />
 
@@ -75,9 +87,11 @@ const ClassDetails = () => {
                     />
                     <div className='flex mt-4 items-center gap-2'>
                         <p className='w-1/2 text-center text-2xl sm:text-[29px] text-[#712941]'>${clss.price}</p>
-                        <button className='bg-[#712941] w-full h-10 hover:bg-[#c86989] rounded-md text-white text-sm sm:text-base'>
-                            Enroll Now
-                        </button>
+                        
+                            <button onClick={handleEnroll} className='bg-[#712941] w-full h-10 hover:bg-[#c86989] rounded-md text-white text-sm sm:text-base'>
+                                Enroll Now
+                            </button>
+                        
                     </div>
                     <hr className="mt-4 mb-4 border-[#712941]" />
 

@@ -25,40 +25,43 @@ export default function ManageUsers() {
     fetchUsers();
   }, []);
 
-  const totalPages = Math.ceil(users.length / itemsPerPage);
+  const filteredUsers = users.filter(u => u.role !== 'admin');
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentUsers = users.slice(startIndex, startIndex + itemsPerPage).filter(u => u.role !== 'admin');
+  const currentUsers = filteredUsers.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className='p-4 sm:p-6'>
+    <div className='sm:p-6 font-dancing'>
       <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">Manage Users</h2>
 
       {loading ? <PreLoader inline /> : (
         <div className='p-3 sm:p-6 bg-[#f3d3e0] border rounded-lg shadow-md'>
 
           {/* Desktop table */}
-          <table className="hidden sm:table w-full border-collapse">
-            <thead>
-              <tr className='text-[#712941] uppercase'>
-                <th className="p-3 text-left"><AiOutlineFieldNumber className='text-2xl'/></th>
-                <th className="p-3 text-left">Image</th>
-                <th className="p-3 text-left">Name</th>
-                <th className="p-3 text-left">Email</th>
-                <th className="p-3 text-left">Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentUsers.map((user, index) => (
-                <tr key={user._id} className="border-b border-white hover:bg-[#fdf0f5] text-[#712941]">
-                  <td className="p-3">{startIndex + index + 1}</td>
-                  <td className="p-3 flex ml-3"><IoPerson className="text-2xl text-[#712941]" /></td>
-                  <td className="p-3">{user.name}</td>
-                  <td className="p-3">{user.email}</td>
-                  <td className="p-3">{user.role}</td>
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="w-full border-collapse min-w-[500px]">
+              <thead>
+                <tr className='text-[#712941] uppercase'>
+                  <th className="p-3 text-left"><AiOutlineFieldNumber className='text-2xl'/></th>
+                  <th className="p-3 text-left">Image</th>
+                  <th className="p-3 text-left">Name</th>
+                  <th className="p-3 text-left">Email</th>
+                  <th className="p-3 text-left">Role</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {currentUsers.map((user, index) => (
+                  <tr key={user._id} className="border-b border-white hover:bg-[#fdf0f5] text-[#712941]">
+                    <td className="p-3">{startIndex + index + 1}</td>
+                    <td className="p-3 flex ml-3"><IoPerson className="text-2xl text-[#712941]" /></td>
+                    <td className="p-3">{user.name}</td>
+                    <td className="p-3">{user.email}</td>
+                    <td className="p-3">{user.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {/* Mobile cards */}
           <div className="flex flex-col gap-3 sm:hidden">

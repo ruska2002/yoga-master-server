@@ -17,7 +17,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
 
-        {/* Brand column - full width on mobile */}
+       
         <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <GrYoga style={{ width: '32px', height: '32px', minWidth: '32px' }} className="text-[#f3d3e0]" />
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Services column */}
+        
         <div className="flex flex-col gap-3">
           <p className="text-[#f3d3e0] uppercase text-xs tracking-widest font-semibold mb-1">Services</p>
           <div className="w-8 h-0.5 bg-[#c86989] mb-2 rounded-full" />
@@ -47,7 +47,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* About column */}
+      
         <div className="flex flex-col gap-3">
           <p className="text-[#f3d3e0] uppercase text-xs tracking-widest font-semibold mb-1">About</p>
           <div className="w-8 h-0.5 bg-[#c86989] mb-2 rounded-full" />
@@ -58,7 +58,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Support column */}
+     
         <div className="flex flex-col gap-3">
           <p className="text-[#f3d3e0] uppercase text-xs tracking-widest font-semibold mb-1">Support</p>
           <div className="w-8 h-0.5 bg-[#c86989] mb-2 rounded-full" />
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
+      
       <div className="border-t border-white/10 py-5 px-6 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-6xl mx-auto text-center">
         <p className="text-white/50 text-xs tracking-wide">© {year} YogaVibe. All rights reserved.</p>
         <div className="hidden sm:flex items-center">

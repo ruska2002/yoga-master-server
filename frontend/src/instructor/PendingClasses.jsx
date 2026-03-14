@@ -28,7 +28,7 @@ export default function PendingClasses() {
   if (loading) return <PreLoader inline />
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="sm:p-6 font-dancing">
       <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">Pending Classes</h2>
 
       {classes.length === 0 ? (
@@ -36,7 +36,7 @@ export default function PendingClasses() {
       ) : (
         <div className="p-3 sm:p-6 bg-[#f3d3e0] border rounded-lg shadow-md">
 
-          {/* Desktop table */}
+         
           <table className="hidden sm:table w-full border-collapse">
             <thead>
               <tr className="text-[#712941] uppercase text-sm">

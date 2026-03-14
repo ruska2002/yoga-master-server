@@ -10,7 +10,7 @@ export default function CardVisual() {
      
       <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
         <div className="mb-6">
-          <label className="block text-[#712941] text-sm mb-1">Card number</label>
+          <label className="block text-[#712941] text-sm mb-1 [font-family:'Dancing_Script',cursive_!important]">Card number</label>
           <div className="flex items-center border-b-2 border-[#f3d3e0] focus-within:border-[#712941]">
             <input
               type="text"
@@ -26,14 +26,14 @@ export default function CardVisual() {
                          [&::-webkit-outer-spin-button]:appearance-none
                          [&::-webkit-inner-spin-button]:appearance-none
                          [&::-moz-appearance]:textfield
-                         w-full p-2 text-lg focus:outline-none placeholder-[#c86989] text-[#712941]"
+                         w-full p-2 text-lg focus:outline-none placeholder-[#c86989] text-[#712941] font-dancing"
             />
           </div>
         </div>
 
         <div className="flex gap-4 mb-6">
           <div className="flex-1">
-            <label className="block text-[#712941] text-sm mb-1">MM/YY</label>
+            <label className="block text-[#712941] text-sm mb-1 font-dancing">MM/YY</label>
             <input
               type="text"
               value={expiry}
@@ -46,7 +46,7 @@ export default function CardVisual() {
                 setExpiry(value);
               }}
               placeholder="07/26"
-              className="w-full border-b-2 border-[#f3d3e0] p-2 focus:outline-none placeholder-[#c86989] focus:border-[#712941] appearance-none
+              className="w-full border-b-2 border-[#f3d3e0] p-2 focus:outline-none placeholder-[#c86989] font-dancing focus:border-[#712941] appearance-none
                          [&::-webkit-outer-spin-button]:appearance-none
                          [&::-webkit-inner-spin-button]:appearance-none
                          [&::-moz-appearance]:textfield
@@ -55,7 +55,7 @@ export default function CardVisual() {
           </div>
 
           <div className="flex-1">
-            <label className="block text-[#712941] text-sm mb-1 ">CVC/CVV2</label>
+            <label className="block text-[#712941] text-sm mb-1 font-dancing">CVC/CVV2</label>
             <input
               type="text"
               value={cvc}
@@ -65,7 +65,7 @@ export default function CardVisual() {
                 setCvc(value);
               }}
               placeholder="123"
-              className="w-full border-b-2 border-[#f3d3e0] p-2 focus:outline-none placeholder-[#c86989] focus:border-[#712941] appearance-none
+              className="w-full border-b-2 border-[#f3d3e0] p-2 font-dancing focus:outline-none placeholder-[#c86989] focus:border-[#712941] appearance-none
                          [&::-webkit-outer-spin-button]:appearance-none
                          [&::-webkit-inner-spin-button]:appearance-none
                          [&::-moz-appearance]:textfield
@@ -76,19 +76,19 @@ export default function CardVisual() {
 
       
       <div className="relative w-full h-56 rounded-xl overflow-hidden shadow-lg bg-gradient-to-r from-blue-400 to-teal-400 text-white p-6">
-        <div className="text-xl tracking-widest mb-8">
+        <div className="text-xl tracking-widest mb-8 font-dancing">
           {cardNumber || "#### #### #### ####"}
         </div>
 
-        <div className="absolute bottom-16 left-6 text-lg font-semibold">
+        <div className="absolute bottom-16 left-6 text-lg font-semibold font-dancing">
           John Smith
         </div>
 
-        <div className="absolute bottom-6 left-6 text-lg">
+        <div className="absolute bottom-6 left-6 text-lg font-dancing">
           {expiry || "MM/YY"}
         </div>
 
-        <div className="absolute bottom-6 right-6 text-lg">
+        <div className="absolute bottom-6 right-6 text-lg font-dancing">
           {cvc || "CVC"}
         </div>
       </div>

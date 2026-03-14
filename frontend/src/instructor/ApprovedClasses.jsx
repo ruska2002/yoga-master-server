@@ -28,7 +28,7 @@ export default function ApprovedClasses() {
   if (loading) return <PreLoader inline />
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="sm:p-6 font-dancing">
       <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">Approved Classes</h2>
 
       {classes.length === 0 ? (

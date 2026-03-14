@@ -31,7 +31,7 @@ export default function Instructors() {
   return (
     <div>
       <NavBar />
-      <div className=''>
+      <div className='font-dancing'>
         <hr className="mt-[5%]"/>
         <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold">INSTRUCTORS</p>
 <hr className="mb-[5%]"/>

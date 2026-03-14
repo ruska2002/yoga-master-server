@@ -3,6 +3,7 @@ import api from '../lib/axios'
 import { useAuth } from '../context/AuthContext'
 import PreLoader from '../components/PreLoader'
 import SelectLevel from '../components/SelectLevel'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function AddClass() {
   const { user } = useAuth()
@@ -44,13 +45,13 @@ export default function AddClass() {
         instructorName: user?.name, instructorEmail: user?.email,
         status: "pending", totalEnrolled: 0,
       }, { headers: { Authorization: `Bearer ${token}` } })
-      alert("Class submitted for approval!")
+      toast.success("Class submitted for approval!")
       setName(''); setImage(null); setPreview(null)
       setAvailableSeats(''); setPrice(''); setVideoLink('')
       setDescription(''); setDuration(''); setLevel('')
     } catch (err) {
       console.log(err)
-      alert("Error submitting class")
+      toast.error("Error submitting class")
     } finally {
       setLoading(false)
     }
@@ -116,7 +117,7 @@ export default function AddClass() {
   ]
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="sm:p-6 font-dancing">
       <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">Add Class</h2>
 
       <div className="p-4 sm:p-6 bg-[#f3d3e0] border rounded-lg shadow-md">
@@ -141,7 +142,7 @@ export default function AddClass() {
 
         <form onSubmit={handleSubmit}>
 
-          {/* Desktop: table layout — Hidden on mobile */}
+        
           <table className="hidden sm:table w-full border-collapse">
             <thead>
               <tr className="text-[#712941] uppercase text-sm">
@@ -161,7 +162,7 @@ export default function AddClass() {
             </tbody>
           </table>
 
-          {/* Mobile: card layout — Hidden on desktop */}
+         
           <div className="flex flex-col gap-4 sm:hidden">
             {fields.map(({ num, label, input }) => (
               <div key={num} className="bg-white/60 rounded-lg p-3 border border-[#c86989]/30">

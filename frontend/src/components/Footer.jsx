@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="mt-[12px]">
         <hr/>
         <footer className="flex justify-center mt-[2%] mb-[2%]">
-        <p className="text-[#712941] text-[12px] md:text-lg">© Copyright {year}</p>
+        <p className="text-[#712941] text-[12px] md:text-lg font-dancing">© Copyright {year}</p>
       </footer>
       </div>
     )

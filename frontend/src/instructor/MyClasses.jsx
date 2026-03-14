@@ -34,7 +34,7 @@ export default function MyClasses() {
   }
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="sm:p-6 font-dancing">
       <h2 className="text-2xl sm:text-3xl font-bold text-[#712941] mb-4 sm:mb-6">My Classes</h2>
 
       {classes.length === 0 ? (
@@ -42,7 +42,7 @@ export default function MyClasses() {
       ) : (
         <div className="p-3 sm:p-6 bg-[#f3d3e0] border rounded-lg shadow-md">
 
-          {/* Desktop table */}
+         
           <table className="hidden sm:table w-full border-collapse">
             <thead>
               <tr className="text-[#712941] uppercase text-sm">
@@ -78,7 +78,7 @@ export default function MyClasses() {
             </tbody>
           </table>
 
-          {/* Mobile cards */}
+          
           <div className="flex flex-col gap-3 sm:hidden">
             {classes.map((cls, index) => (
               <div key={cls._id} className="bg-white/60 rounded-lg p-3 border border-[#c86989]/30 flex gap-3 items-center">

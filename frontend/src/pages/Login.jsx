@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 import { useNavigate } from 'react-router-dom'; 
 import api from '../lib/axios'
 import { useAuth } from '../context/AuthContext'  
+import toast from 'react-hot-toast';
 
 export default function Login() {
   const { login } = useAuth();  
@@ -24,11 +25,13 @@ export default function Login() {
       setError('');
       navigate('/dashboard'); 
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      const message = err.response?.data?.message || 'Login failed';
+      setError(message)
+      toast.error(message)
     }
   };
   return (
- <div className="flex flex-col min-h-screen">
+ <div className="flex flex-col min-h-screen font-dancing">
   <NavBar />
 
   <main className="flex flex-col justify-center items-center flex-1 px-4 mt-6">

@@ -6,7 +6,7 @@ export default function AdminDashboard() {
   const { user } = useAuth();
 
   return (
-    <div className='flex flex-col justify-center items-center gap-4 text-[#712941]'>
+    <div className='flex flex-col justify-center items-center gap-4 text-[#712941] font-dancing'>
       <h1 className='text-[40px] font-bold'>Admin Panel</h1>
       <p className='text-xl'>Welcome, <span className='uppercase font-bold'>{user?.name}</span>!</p>
       <p className='text-[#8c3256]'>You have full control over users, classes, and applications.</p>

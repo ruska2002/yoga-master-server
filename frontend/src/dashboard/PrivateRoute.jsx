@@ -8,7 +8,7 @@ export default function PrivateRoute({ allowedRoles }) {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen font-dancing">
         <p>Loading...</p>
       </div>
     );

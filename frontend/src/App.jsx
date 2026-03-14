@@ -27,6 +27,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Checkout from "./checkout/Checkout";
 import ClassDetails from "./pages/ClassDetails"
+import { Toaster } from 'react-hot-toast';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -34,47 +35,46 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Registration />} />
-      <Route path="/instructors" element={<Instructors />} />
-      <Route path="/classes" element={<Classes />} />
-      <Route path="/classes/:id" element={<ClassDetails />} />
+    <>
+      <Toaster position="top-center"/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/instructors" element={<Instructors />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/classes/:id" element={<ClassDetails />} />
 
-     
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+            {/* user routes */}
+            <Route path="my-enrolled" element={<MyEnrolled />} />
+            <Route path="my-selected" element={<MySelected />} />
+            <Route
+              path="/dashboard/payment-info"
+              element={
+                <Elements stripe={stripePromise}>
+                  <Checkout />
+                </Elements>
+              }
+            />
+            <Route path='/dashboard/payment-history' element={<PaymentHistory/>}/>
+            <Route path="apply-instructor" element={<ApplyInstructor />} />
 
+            {/* // instructor routes */}
+            <Route path="add-class" element={<AddClass />} />
+            <Route path="my-classes" element={<MyClasses />} />
+            <Route path="pending-classes" element={<PendingClasses />} />
+            <Route path="approved-classes" element={<ApprovedClasses />} />
 
-
-      <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<DashboardHome />} />
-          {/* user routes */}
-          <Route path="my-enrolled" element={<MyEnrolled />} />
-          <Route path="my-selected" element={<MySelected />} />
-          <Route
-            path="/dashboard/payment-info"
-            element={
-              <Elements stripe={stripePromise}>
-                <Checkout />
-              </Elements>
-            }
-          />
-          <Route path='/dashboard/payment-history' element={<PaymentHistory/>}/>
-          <Route path="apply-instructor" element={<ApplyInstructor />} />
-
-          {/* // instructor routes */}
-          <Route path="add-class" element={<AddClass />} />
-          <Route path="my-classes" element={<MyClasses />} />
-          <Route path="pending-classes" element={<PendingClasses />} />
-          <Route path="approved-classes" element={<ApprovedClasses />} />
-
-          {/* admin routes */}
-          <Route path="manage-users" element={<ManageUsers />} />
-          <Route path="manage-classes" element={<ManageClasses />} />
-          <Route path="applications" element={<Applications />} />
+            {/* admin routes */}
+            <Route path="manage-users" element={<ManageUsers />} />
+            <Route path="manage-classes" element={<ManageClasses />} />
+            <Route path="applications" element={<Applications />} />
+          </Route>
         </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }

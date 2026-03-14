@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import api from "../lib/axios";
+import toast from "react-hot-toast";
 
 export default function Checkout() {
   const stripe = useStripe();
@@ -36,7 +37,7 @@ export default function Checkout() {
       );
 
       if (error) {
-        alert(error.message);
+        toast.error(error.message);
       } else if (paymentIntent.status === "succeeded") {
         const user = JSON.parse(localStorage.getItem("user"));
 
@@ -59,7 +60,7 @@ export default function Checkout() {
       }
     } catch (err) {
       console.log(err);
-      alert("Payment failed!");
+      toast.error("Payment failed!");
     }
     setLoading(false);
   };
@@ -67,7 +68,7 @@ export default function Checkout() {
   
   if (success) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 text-[#712941]">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 text-[#712941] font-dancing">
         <div className="text-6xl">✅</div>
         <h1 className="text-3xl font-bold">Payment Successful!</h1>
         <p className="text-[#c86989]">Your classes have been enrolled.</p>
@@ -90,7 +91,7 @@ export default function Checkout() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6">
+    <div className="max-w-md mx-auto mt-10 p-6 font-dancing">
       <h1 className="text-2xl font-bold mb-2 text-[#712941]">Checkout</h1>
       <p className="text-[#c86989] mb-6">Total: <span className="font-bold text-[#712941]">${totalWithTax}</span></p>
 

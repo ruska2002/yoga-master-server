@@ -4,6 +4,7 @@ import SelectGender from "./SelectGender";
 import api from "../lib/axios";
 import home from '../../public/assets/home.png'
 import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Registration = () => {
   const { login } = useAuth(); 
@@ -24,12 +25,14 @@ const Registration = () => {
     login(response.data); 
     navigate("/dashboard");
   } catch (err) {
-    setError(err.response?.data?.message || "Registration failed");
+    const message = err.response?.data?.message || "Registration failed";
+    setError(message)
+    toast.error(message);
   }
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 font-dancing">
       <form onSubmit={handleSubmit} className="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl flex flex-col gap-5 text-[#712941]">
         <h2 className="text-3xl font-bold text-center mb-2">Create Account</h2>
 

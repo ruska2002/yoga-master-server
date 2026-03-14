@@ -74,7 +74,7 @@ const handleSelect = async (selectedClass) => {
     return(
         <div>
             <NavBar/>
-           <div className="flex flex-col">
+           <div className="flex flex-col font-dancing">
             <hr className="mt-[5%]"/>
              <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold uppercase">Classes</p>
              <hr className="mb-[5%]"/>
@@ -108,7 +108,7 @@ const handleSelect = async (selectedClass) => {
                     onClick={() => handleSelect(cls)}
                     disabled={cartIds.includes(cls._id) || enrolledIds.includes(cls._id)}
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                       sm:py-2 sm:px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10
+                       py-2 px-4 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10
                       disabled:bg-gray-400 disabled:cursor-not-allowed
                       bg-[#c86989] text-white hover:bg-[#712941]"
                   >

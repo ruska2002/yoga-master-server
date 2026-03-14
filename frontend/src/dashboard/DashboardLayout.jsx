@@ -24,7 +24,7 @@ export default function DashboardLayout() {
   };
 
   const links = (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full font-dancing">
       <div className="p-6 pt-14">
         <h2 className="text-2xl font-bold text-[#712941] mb-6">YogaVibe</h2>
         <div className="flex flex-col gap-3 text-[#712941]">
@@ -88,7 +88,7 @@ export default function DashboardLayout() {
         </div>
       </div>
 
-      {/* Bottom User Info */}
+    
       <div className="p-6 flex flex-col gap-3 text-[#712941]">
         <div className="flex items-center">
           <div className="w-2 h-2 rounded-full bg-[#712941]" />
@@ -110,14 +110,13 @@ export default function DashboardLayout() {
   );
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 font-dancing">
 
-      {/* Desktop sidebar */}
+     
       <div className="hidden md:flex w-64 bg-white shadow-lg flex-col">
         {links}
       </div>
 
-      {/* Mobile hamburger button */}
       <button
         onClick={() => setSidebarOpen(true)}
         className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-md text-[#712941]"
@@ -125,7 +124,7 @@ export default function DashboardLayout() {
         <HiMenuAlt2 className="w-6 h-6" />
       </button>
 
-      {/* Mobile sliding sidebar - full screen with inline style */}
+     
       <div
         style={{
           width: '100vw',
@@ -143,7 +142,7 @@ export default function DashboardLayout() {
         {links}
       </div>
 
-      {/* Main content */}
+     
       <div className="flex-1 p-4 md:p-6 pt-16 md:pt-6">
         <Outlet />
       </div>

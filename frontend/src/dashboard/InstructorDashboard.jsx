@@ -6,7 +6,7 @@ export default function InstructorDashboard() {
   const { user } = useAuth();
 
   return (
-    <div className='flex flex-col justify-center items-center gap-4 text-[#712941] px-4 py-8'>
+    <div className='flex flex-col justify-center items-center gap-4 text-[#712941] px-4 py-8 font-dancing'>
       <h1 className='text-2xl sm:text-4xl font-bold text-center'>Instructor Panel</h1>
       <p className='text-base sm:text-xl text-center'>Welcome, <span className='uppercase font-bold'>{user?.name}</span>!</p>
       <p className='text-[#8c3256] text-sm sm:text-base text-center'>Manage your classes and track your students from here.</p>

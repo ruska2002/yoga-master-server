@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "../lib/axios"; 
 import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 export default function ApplyInstructor() {
   const [question, setQuestion] = useState("");
@@ -57,7 +58,7 @@ export default function ApplyInstructor() {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(res);
-      alert("Application submitted successfully!");
+      toast.success("Application submitted successfully!");
       setYearsOfExperience("");
       setAge("");
       setSpecialization("");
@@ -66,14 +67,14 @@ export default function ApplyInstructor() {
       setPreview(null);
     } catch (err) {
       console.log(err);
-      alert("Error submitting application");
+      toast.error("Error submitting application");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="p-6">
+    <div className="sm:p-6 font-dancing">
       <h2 className="text-3xl font-bold text-[#712941] mb-6">
         Apply as Instructor
       </h2>

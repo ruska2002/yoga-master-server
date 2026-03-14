@@ -8,7 +8,7 @@ const PreLoader = ({ inline = false }) => {
     }>
       <div className="flex flex-col items-center gap-6">
         <div className="w-16 h-16 border-4 border-[#8b5e83] border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-[#712941] text-lg tracking-widest animate-pulse">Breathe In...</p>
+        <p className="text-[#712941] text-lg tracking-widest animate-pulse font-dancing">Breathe In...</p>
       </div>
     </div>
   );

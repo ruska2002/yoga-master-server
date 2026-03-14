@@ -11,7 +11,7 @@ const SelectLevel = ({ value, onChange }) => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative font-dancing">
       <div
         onClick={() => setOpen(!open)}
         className="border p-2 rounded border-[#c86989] 
