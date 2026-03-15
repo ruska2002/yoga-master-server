@@ -152,7 +152,7 @@ const ClassDetails = () => {
             </div>
 
            
-            <div className='flex flex-col px-4 sm:px-8 md:px-12 text-[#712941]'>
+            <div className='flex flex-col px-4 sm:px-8 md:px-12 text-[#712941] lg:-mt-32'>
 
                 
                 <div className='mt-2 sm:mt-4'>
