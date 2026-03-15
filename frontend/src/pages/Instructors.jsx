@@ -51,8 +51,8 @@ export default function Instructors() {
              <div className="w-1/2 flex flex-col gap-2">
               <h2 className="md:text-2xl text-[15px] font-bold text-[#7d344c] text-center">{inst.name}</h2>
               <h3 className='md:text-xl text-[10px] font-medium text-[#a3355a]'>What is yoga to me?</h3>
-              <p className='text-[#ab3a60] text-[10px] md:text-[16px]'>{inst.yoga}</p>
-              <p className='text-[#b75b7a] text-[9px] md:text-[15px] font-semibold'>{inst.name}'s experience - {inst.yearsOfExperience} years</p>
+              <p className='text-[#ab3a60] text-[10px] md:text-[16px] font-nunito'>{inst.yoga}</p>
+              <p className='text-[#b75b7a] text-[9px] md:text-[15px] font-nunito '>{inst.name}'s experience - {inst.yearsOfExperience} years</p>
             </div>
           </div>
         ))}

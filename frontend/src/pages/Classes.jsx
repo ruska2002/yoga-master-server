@@ -9,7 +9,7 @@ const Classes = () => {
     const [cartIds, setCartIds] = useState([]);
     const [enrolledIds, setEnrolledIds] = useState([]);
     const [classes, setClasses] = useState([])
-    const [feedback, setFeedback] = useState({})  // FIX: replace alert() with inline feedback
+    const [feedback, setFeedback] = useState({})  
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
@@ -56,7 +56,7 @@ const Classes = () => {
 
     const handleSelect = async (selectedClass) => {
         const token = localStorage.getItem("token");
-        // FIX: replace alert() with inline feedback state
+       
         if (!token) {
             navigate('/login')
             return
@@ -81,9 +81,9 @@ const Classes = () => {
     return (
         <div>
             <NavBar />
-            <div className="flex flex-col font-dancing">
+            <div className="flex flex-col font-nunito">
                 <hr className="mt-[5%]" />
-                <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold uppercase">Classes</p>
+                <p className="text-center text-[#712941] text-[20px] md:text-[35px] font-bold uppercase font-dancing">Classes</p>
                 <hr className="mb-[5%]" />
                 <div className="lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 gap-6 max-w-6xl mx-auto">
                     {classes.map((cls) => (
@@ -93,10 +93,10 @@ const Classes = () => {
                         >
                             <img
                                 src={cls.image}
-                                alt={cls.name}               // FIX: use class name as alt
+                                alt={cls.name}              
                                 width={230}
-                                height={140}                 // FIX: explicit dimensions prevent CLS
-                                loading="lazy"               // FIX: lazy load all card images
+                                height={140}                 
+                                loading="lazy"             
                                 className="w-full h-[140px] object-cover transition-transform duration-300 group-hover:scale-105"
                             />
 
@@ -105,7 +105,7 @@ const Classes = () => {
                                 <p className="text-[10px] min-[535px]:text-[14px]">Instructor: {cls.instructorName}</p>
                                 <p className="text-[9px] min-[535px]:text-[13px]">Available Seats: {cls.availableSeats}</p>
 
-                                {/* FIX: type="button" added */}
+                              
                                 <button
                                     type="button"
                                     onClick={() => navigate(`/classes/${cls._id}`)}
@@ -117,9 +117,9 @@ const Classes = () => {
 
                             <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none"></div>
 
-                            {/* FIX: show inline feedback instead of alert() */}
+                          
                             <button
-                                type="button"              // FIX: type="button"
+                                type="button"             
                                 onClick={() => handleSelect(cls)}
                                 disabled={cartIds.includes(cls._id) || enrolledIds.includes(cls._id)}
                                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
