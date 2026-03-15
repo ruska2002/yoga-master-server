@@ -8,7 +8,9 @@ export default {
     extend: { 
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
-        dancing: ['"Dancing Script"', 'cursive'],
+        dancing: ['Dancing Script', 'cursive'],
+        Bitcount: ["Bitcount Ink"]
+
       },
     },
   },

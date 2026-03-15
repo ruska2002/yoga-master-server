@@ -98,7 +98,7 @@ export default function HomePage() {
             Join thousands of students in our most loved yoga classes.
           </p>
 
-          <div className="mt-6 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="mt-6 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto font-nunito">
             {popularClasses.map((cls, indx) => (
               <Link to={`/classes/${cls._id}`} key={indx}>
                 <div className={`rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 ${indx === 1 ? 'md:-mt-6 md:mb-6' : ''}`}>
@@ -137,7 +137,7 @@ export default function HomePage() {
       Life in motion
     </p>
 
-    {/* DESKTOP: original wavy flex layout */}
+    
     <div className="hidden md:flex relative w-full flex-wrap justify-center gap-6 py-16 px-8">
       {pictures.map((img, index) => (
         <div
@@ -157,38 +157,38 @@ export default function HomePage() {
       ))}
     </div>
 
-    {/* MOBILE: grid with rotations */}
-    <div className="md:hidden max-w-sm mx-auto px-4">
-      <div className="grid grid-cols-2 gap-3">
-        {pictures.map((img, index) => {
-          const rotations = ['-2deg', '1deg', '-1deg', '2deg', '0deg', '-3deg'];
-          const rot = rotations[index % rotations.length];
-          const heights = ['160px', '200px', '176px', '220px', '144px', '190px'];
-          const h = heights[index % heights.length];
+    
+      <div className="md:hidden max-w-sm mx-auto px-4">
+        <div className="grid grid-cols-2 gap-3">
+          {pictures.map((img, index) => {
+            const rotations = ['-2deg', '1deg', '-1deg', '2deg', '0deg', '-3deg'];
+            const rot = rotations[index % rotations.length];
+            const heights = ['160px', '200px', '176px', '220px', '144px', '190px'];
+            const h = heights[index % heights.length];
 
-          return (
-            <div
-              key={img.id}
-              style={{ transform: `rotate(${rot})` }}
-              className="group cursor-pointer hover:scale-105 transition-all duration-500 ease-out"
-            >
+            return (
               <div
-                className="relative rounded-2xl overflow-hidden"
-                style={{ height: h, boxShadow: '0 8px 32px rgba(113,41,65,0.18)' }}
+                key={img.id}
+                style={{ transform: `rotate(${rot})` }}
+                className="group cursor-pointer hover:scale-105 transition-all duration-500 ease-out"
               >
-                <img
-                  src={img.pic}
-                  alt={`Class ${img.id}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#712941]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div
+                  className="relative rounded-2xl overflow-hidden"
+                  style={{ height: h, boxShadow: '0 8px 32px rgba(113,41,65,0.18)' }}
+                >
+                  <img
+                    src={img.pic}
+                    alt={`Class ${img.id}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#712941]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
       
         <section className="w-full py-10 px-4 sm:px-8 mb-10">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import api from "../lib/axios"; 
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { uploadToCloudinary } from "../lib/cloudinary";
 
 export default function ApplyInstructor() {
   const [question, setQuestion] = useState("");
@@ -21,27 +22,16 @@ export default function ApplyInstructor() {
     }
   };
 
-  const uploadToImgbb = async (imageFile) => {
-    const formData = new FormData();
-    formData.append("image", imageFile);
-    const res = await fetch(
-      `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_UPLOAD_PHOTO}`,
-      { method: "POST", body: formData }
-    );
-    const data = await res.json();
-    console.log("imgbb response:", data);
-    return data.data.url;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token"); 
-    if (!token) return alert("Please login first");
-    if (!photo) return alert("Please upload your photo");
+    if (!token) return toast.error("Please login first");
+    if (!photo) return toast.error("Please upload your photo");
 
     try {
       setLoading(true);
-      const photoUrl = await uploadToImgbb(photo);
+      const photoUrl = await uploadToCloudinary(photo);
 
       const data = {
         name: user?.name,
@@ -124,7 +114,7 @@ export default function ApplyInstructor() {
           {/*  Photo Upload Section */}
           <div className="flex flex-col items-center gap-3 py-2">
             
-            {/* Circle preview or placeholder */}
+          
             <div className="w-24 h-24 rounded-full border-2 border-dashed border-[#c86989] overflow-hidden flex items-center justify-center bg-pink-50">
               {preview ? (
                 <img src={preview} alt="Preview" className="w-full h-full object-cover" />
@@ -133,7 +123,7 @@ export default function ApplyInstructor() {
               )}
             </div>
 
-            {/* Hidden real input */}
+         
             <input
               type="file"
               accept="image/*"
@@ -142,7 +132,7 @@ export default function ApplyInstructor() {
               className="hidden"
             />
 
-            {/* Styled button that triggers input */}
+            
             <label
               htmlFor="photoInput"
               className="cursor-pointer border border-[#c86989] text-[#712941] py-1 px-4 rounded hover:bg-[#712941] hover:text-white transition-colors text-sm"

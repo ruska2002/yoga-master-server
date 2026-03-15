@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import PreLoader from '../components/PreLoader'
 import SelectLevel from '../components/SelectLevel'
 import toast, { Toaster } from 'react-hot-toast'
+import { uploadToCloudinary } from "../lib/cloudinary";
 
 export default function AddClass() {
   const { user } = useAuth()
@@ -23,22 +24,14 @@ export default function AddClass() {
     if (file) { setImage(file); setPreview(URL.createObjectURL(file)) }
   }
 
-  const uploadToImgbb = async (imageFile) => {
-    const formData = new FormData()
-    formData.append("image", imageFile)
-    const res = await fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_UPLOAD_PHOTO}`, { method: "POST", body: formData })
-    const data = await res.json()
-    return data.data.url
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const token = localStorage.getItem("token")
-    if (!token) return alert("Please login first")
-    if (!image) return alert("Please upload a class photo")
+    if (!token) return toast.error("Please login first")
+    if (!image) return toast.error("Please upload a class photo")
     try {
       setLoading(true)
-      const imageUrl = await uploadToImgbb(image)
+      const imageUrl = await uploadToCloudinary(image)
       await api.post("/new-class", {
         name, image: imageUrl, availableSeats, price, videoLink,
         description, duration, level,
